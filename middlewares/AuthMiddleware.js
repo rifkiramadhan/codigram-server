@@ -5,7 +5,7 @@ const validateToken = (req, res, next) => {
 
     if (!accessToken) {
         return res.json({
-            error: "User Not Logged In!"
+            error: 'User Not Logged In!'
         });
     };
 

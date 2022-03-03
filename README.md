@@ -2,6 +2,11 @@
 
 ## Server Social Media
 
+### Hosting Aplikasi
+
+- [Backend](https://codigram-api.herokuapp.com)
+- [Frontend](https://codigram.netlify.app)
+
 ### Rancangan Data
 
 - [ERD](https://drive.google.com/file/d/1xtUpR-D0lAiq2loQG54Eq2ZOTGmH2aUG/view?usp=sharing)
@@ -16,9 +21,11 @@
 - npm install bcryptjs
 - npm install jsonwebtoken
 - npm install dotenv
-- npm install cookie-parser
 
 ### Cara Membuat Table & Database
 
 - npx sequelize-cli db:create
 - npm run start (Automatice migration table)
+
+## Place Holder
+- https://via.placeholder.com/512x512
