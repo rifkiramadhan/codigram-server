@@ -8,6 +8,15 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         }
+        ,
+        createdAt: {
+            type: DataTypes.DATEONLY,
+            allowNull: false
+        },
+        updatedAt: {
+            type: DataTypes.DATEONLY,
+            allowNull: false
+        }
     });
     
     return Comments;
