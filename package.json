@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "- npm init -y",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",

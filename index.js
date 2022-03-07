@@ -6,6 +6,8 @@ const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
+const db = require('./models');
+
 // Posts Router
 const postRouter = require('./routes/Posts');
 app.use('/posts', postRouter);
@@ -22,7 +24,6 @@ app.use('/auth', userRouter);
 const likeRouter = require('./routes/Likes');
 app.use('/likes', likeRouter);
 
-const db = require('./models');
 
 db.sequelize.sync().then(() => {
     app.listen(process.env.PORT || 3001, () => {
