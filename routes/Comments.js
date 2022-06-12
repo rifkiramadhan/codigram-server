@@ -11,7 +11,7 @@ router.get('/:postId', async (req, res) => {
         }
     });
     
-    res.json(comments);
+    return res.json(comments);
 });
 
 router.post('/', validateToken, async (req, res) => {
@@ -20,7 +20,7 @@ router.post('/', validateToken, async (req, res) => {
     comment.username = username;
     await Comments.create(comment);
 
-    res.json(comment);
+    return res.json(comment);
 });
 
 router.delete('/:commentId', validateToken, async (req, res) => {
@@ -32,7 +32,7 @@ router.delete('/:commentId', validateToken, async (req, res) => {
         }
     });
 
-    res.json('Deleted Successfully');
+    return res.json('Deleted Successfully');
 });
 
 module.exports = router;

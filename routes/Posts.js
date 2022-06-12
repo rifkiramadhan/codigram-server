@@ -13,7 +13,7 @@ router.get('/', validateToken, async (req, res) => {
         }
     });
 
-    res.json({
+    return res.json({
         listOfPosts: listOfPosts,
         likedPosts: likedPosts
     });
@@ -23,7 +23,7 @@ router.get('/byId/:id', async (req, res) => {
     const id = req.params.id;
     const post = await Posts.findByPk(id);
     
-    res.json(post);
+    return res.json(post);
 });
 
 router.get('/byuserId/:id', async (req, res) => {
@@ -37,7 +37,7 @@ router.get('/byuserId/:id', async (req, res) => {
         ]
     });
     
-    res.json(listOfPosts);
+    return res.json(listOfPosts);
 });
 
 router.post('/', validateToken, async (req, res) => {
@@ -46,7 +46,7 @@ router.post('/', validateToken, async (req, res) => {
     post.UserId = req.user.id;
     await Posts.create(post);
     
-    res.json(post);
+    return res.json(post);
 });
 
 router.put('/title', validateToken, async (req, res) => {
@@ -60,7 +60,7 @@ router.put('/title', validateToken, async (req, res) => {
         }
     });
 
-    res.json(newTitle);
+    return res.json(newTitle);
 });
 
 router.put('/postText', validateToken, async (req, res) => {
@@ -74,7 +74,7 @@ router.put('/postText', validateToken, async (req, res) => {
         }
     });
     
-    res.json(newText);
+    return res.json(newText);
 });
 
 router.delete('/:postId', validateToken, async (req, res) => {
@@ -86,7 +86,7 @@ router.delete('/:postId', validateToken, async (req, res) => {
         }
     });
 
-    res.json('Deleted Successfully');
+    return res.json('Deleted Successfully');
 });
 
 module.exports = router;

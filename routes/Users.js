@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
        username: username,
        password: hash,
      });
-     res.json('Success');
+     return res.json('Success');
    });
 });
 
@@ -28,14 +28,14 @@ router.post('/login', async (req, res) => {
     });
 
   if (!user){
-      res.json({ 
+      return res.json({ 
           error: 'User Doesn`t Exist' 
       });
   };
 
   bcrypt.compare(password, user.password).then(async (match) => {
     if (!match) {        
-        res.json({ 
+        return res.json({ 
           error: 'Wrong Username And Password Combination' 
         });
     };
@@ -48,7 +48,7 @@ router.post('/login', async (req, res) => {
       'importantsecret'
     );
     
-    res.json({ 
+    return res.json({ 
         token: accessToken, 
         username: username, 
         id: user.id 
@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
 });
 
 router.get('/auth', validateToken, (req, res) => {
-  res.json(req.user);
+  return res.json(req.user);
 });
 
 router.get('/basicinfo/:id', async (req, res) => {
@@ -67,7 +67,7 @@ router.get('/basicinfo/:id', async (req, res) => {
     attributes: { exclude: ['password'] },
   });
 
-  res.json(basicInfo);
+  return res.json(basicInfo);
 });
 
 router.put('/changepassword', validateToken, async (req, res) => {
@@ -75,14 +75,18 @@ router.put('/changepassword', validateToken, async (req, res) => {
   const user = await Users.findOne({ where: { username: req.user.username } });
 
   bcrypt.compare(oldPassword, user.password).then(async (match) => {
-    if (!match) res.json({ error: 'Wrong Password Entered!' });
+    if (!match) {
+      return res.json({ 
+        error: 'Wrong Password Entered!' 
+      });
+    };
 
     bcrypt.hash(newPassword, 10).then((hash) => {
       Users.update(
         { password: hash },
         { where: { username: req.user.username } }
       );
-      res.json('Success');
+      return res.json('Success');
     });
   });
 });

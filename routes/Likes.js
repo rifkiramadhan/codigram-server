@@ -20,7 +20,7 @@ router.post('/', validateToken, async (req, res) => {
             UserId: UserId
         });
 
-        res.json({
+        return res.json({
             liked: true
         });
     } else {
@@ -31,10 +31,10 @@ router.post('/', validateToken, async (req, res) => {
             }
         });
 
-        res.json({
+        return res.json({
             liked: false
         });
-    }
+    };
 });
 
 module.exports = router;
