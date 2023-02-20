@@ -14,11 +14,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "kxjoiibeaxhcrj",
-    "password": "a665579498ca5a731ae897ac66d081108dcd74617d80be8bd88bf80f2fa371a9",
-    "database": "ddl05hsdnsubuj",
-    "host": "ec2-44-207-253-50.compute-1.amazonaws.com",
-    "port": 5432,
+    "username": "postgres",
+    "password": "CxYQC1frLr5aYMPsVc3O",
+    "database": "railway",
+    "host": "containers-us-west-149.railway.app",
+    "port": 7417,
     "dialect": "postgres",
     "dialectOptions": {
       "ssl": {
